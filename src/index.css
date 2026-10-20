@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* surfaces */
+  --bg:        #EFE7DC;  /* page, warm sand */
+  --bg-side:   #E6DDD0;  /* sidebar */
+  --clay:      #FBF7F2;  /* raised cards */
+  --clay-well: #F6F0E8;  /* pressed/inset areas */
+
+  /* text (all AA on --clay) */
+  --text:      #2A2520;
+  --text-2:    #5C544B;
+  --text-3:    #6B6258;
+
+  /* status (flat, never decorative) */
+  --critical:      #D13A3F;  
+  --critical-ink:  #B52A31;  
+  --critical-clay: #F8C9C6;
+
+  --warning:       #F5A524;  
+  --warning-ink:   #8A5500;  
+  --warning-clay:  #FCE7B8;
+
+  --ok:            #2E9E63;  
+  --ok-ink:        #1E6B42;  
+  --ok-clay:       #CDEBD9;
+
+  --info-ink:      #3B4F8A;  
+  --info-clay:     #DCE3F7;
+
+  /* shadow ingredients */
+  --shade: 120,90,60;    /* warm brown shadow color, never pure black */
+}
+
+@layer base {
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Monospace for tabular readings */
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Clay Surface Utility Classes */
+.clay-raised {
+  background: var(--clay);
+  border-radius: 32px;
+  box-shadow:
+    inset -6px -6px 12px rgba(var(--shade), .12),
+    inset  6px  6px 12px rgba(255,255,255,.9),
+     10px 12px 24px rgba(var(--shade), .22);
+}
+
+.clay-raised-sm {
+  background: var(--clay);
+  border-radius: 20px;
+  box-shadow:
+    inset -3px -3px 8px rgba(var(--shade), .10),
+    inset  3px  3px 8px rgba(255,255,255,.9),
+     6px 8px 18px rgba(var(--shade), .16);
+}
+
+.clay-inset {
+  background: var(--clay-well);
+  border-radius: 22px;
+  box-shadow:
+    inset  3px  3px 7px rgba(var(--shade), .18),
+    inset -3px -3px 7px rgba(255,255,255,.9);
+}
+
+.clay-inset-sm {
+  background: var(--clay-well);
+  border-radius: 14px;
+  box-shadow:
+    inset  2px  2px 5px rgba(var(--shade), .16),
+    inset -2px -2px 5px rgba(255,255,255,.9);
+}
+
+.clay-button {
+  border-radius: 18px;
+  height: 48px;
+  padding: 0 20px;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    inset -3px -3px 6px rgba(0,0,0,.12),
+    inset  3px  3px 6px rgba(255,255,255,.5),
+     4px  6px 12px rgba(var(--shade), .25);
+  transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clay-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset -3px -3px 6px rgba(0,0,0,.14),
+    inset  3px  3px 6px rgba(255,255,255,.6),
+     6px  8px 16px rgba(var(--shade), .30);
+}
+
+.clay-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset  3px  3px 6px rgba(0,0,0,.20),
+    inset -2px -2px 6px rgba(255,255,255,.3),
+     2px  3px 6px rgba(var(--shade), .16);
+}
+
+/* Clay Button Color Variants */
+.clay-btn-amber {
+  background: var(--warning);
+  color: var(--text);
+  box-shadow:
+    inset -3px -3px 6px rgba(138,85,0,.25),
+    inset  3px  3px 6px rgba(255,255,255,.6),
+     4px  6px 14px rgba(var(--shade), .25);
+}
+.clay-btn-amber:hover {
+  background: #f6ab36;
+}
+
+.clay-btn-red {
+  background: var(--critical);
+  color: #FFFFFF;
+  box-shadow:
+    inset -3px -3px 6px rgba(181,42,49,.35),
+    inset  3px  3px 6px rgba(255,255,255,.4),
+     4px  6px 14px rgba(181,42,49,.35);
+}
+.clay-btn-red:hover {
+  background: #db484d;
+}
+
+.clay-btn-cream {
+  background: var(--clay);
+  color: var(--text);
+  box-shadow:
+    inset -3px -3px 6px rgba(var(--shade), .12),
+    inset  3px  3px 6px rgba(255,255,255,.9),
+     4px  6px 12px rgba(var(--shade), .20);
+}
+.clay-btn-cream:hover {
+  background: #FFFFFF;
+}
+
+.clay-btn-green {
+  background: var(--ok);
+  color: #FFFFFF;
+  box-shadow:
+    inset -3px -3px 6px rgba(30,107,66,.3),
+    inset  3px  3px 6px rgba(255,255,255,.4),
+     4px  6px 14px rgba(30,107,66,.3);
+}
+
+.clay-modal {
+  background: var(--clay);
+  border-radius: 36px;
+  box-shadow:
+    inset -6px -6px 14px rgba(var(--shade), .12),
+    inset  6px  6px 14px rgba(255,255,255,.9),
+     16px 20px 40px rgba(var(--shade), .30);
+}
+
+.clay-drawer {
+  background: var(--clay);
+  border-top-left-radius: 36px;
+  border-bottom-left-radius: 36px;
+  box-shadow:
+    inset -6px -6px 14px rgba(var(--shade), .12),
+    inset  6px  6px 14px rgba(255,255,255,.9),
+    -12px 0 32px rgba(var(--shade), .25);
+}
+
+
+/* Tinted Clay Surfaces */
+.clay-critical {
+  background: var(--critical-clay);
+  border-radius: 34px;
+  box-shadow:
+    inset -6px -6px 12px rgba(180,60,60,.18),
+    inset  6px  6px 12px rgba(255,255,255,.9),
+     10px 12px 26px rgba(180,60,60,.28);
+}
+
+.clay-warning {
+  background: var(--warning-clay);
+  border-radius: 32px;
+  box-shadow:
+    inset -6px -6px 12px rgba(180,120,30,.18),
+    inset  6px  6px 12px rgba(255,255,255,.9),
+     10px 12px 24px rgba(180,120,30,.24);
+}
+
+.clay-ok {
+  background: var(--ok-clay);
+  border-radius: 32px;
+  box-shadow:
+    inset -6px -6px 12px rgba(40,140,80,.16),
+    inset  6px  6px 12px rgba(255,255,255,.9),
+     10px 12px 24px rgba(40,140,80,.22);
+}
+
+.clay-info {
+  background: var(--info-clay);
+  border-radius: 32px;
+  box-shadow:
+    inset -6px -6px 12px rgba(60,80,140,.16),
+    inset  6px  6px 12px rgba(255,255,255,.9),
+     10px 12px 24px rgba(60,80,140,.22);
+}
+
+/* Clay Table Row (soft rounded floating row) */
+.clay-row {
+  background: var(--clay);
+  border-radius: 18px;
+  box-shadow:
+    inset -2px -2px 5px rgba(var(--shade), .08),
+    inset  2px  2px 5px rgba(255,255,255,.9),
+     3px  4px 10px rgba(var(--shade), .12);
+  transition: all 150ms ease;
+}
+
+.clay-row:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset -2px -2px 5px rgba(var(--shade), .10),
+    inset  2px  2px 5px rgba(255,255,255,.95),
+     5px  7px 14px rgba(var(--shade), .18);
+}
+
+/* Clay Inset Input/Search */
+.clay-input {
+  background: var(--clay-well);
+  border-radius: 18px;
+  border: 0;
+  box-shadow:
+    inset  3px  3px 6px rgba(var(--shade), .18),
+    inset -3px -3px 6px rgba(255,255,255,.9);
+  transition: all 150ms ease;
+  color: var(--text);
+}
+
+.clay-input:focus {
+  outline: none;
+  box-shadow:
+    inset  3px  3px 6px rgba(var(--shade), .22),
+    inset -3px -3px 6px rgba(255,255,255,.9),
+    0 0 0 2px var(--info-ink);
+}
+
+/* Clay Pill */
+.clay-pill {
+  border-radius: 999px;
+  box-shadow:
+    inset -2px -2px 4px rgba(var(--shade), .10),
+    inset  2px  2px 4px rgba(255,255,255,.8),
+     2px  3px 6px rgba(var(--shade), .15);
+}
+
+.clay-pill-inset {
+  border-radius: 999px;
+  background: var(--clay-well);
+  box-shadow:
+    inset  2px  2px 5px rgba(var(--shade), .16),
+    inset -2px -2px 5px rgba(255,255,255,.9);
+}
+
+/* Custom warm sand scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9CEBF;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C4B7A5;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
